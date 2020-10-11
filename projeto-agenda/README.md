@@ -14,4 +14,4 @@ Colocar em prática os verbos patch e put que aprendemos hoje e demonstrar que p
 - Nodemon
 - Insomnia
 
-![Arquitetura do projeto](./arquitetura.png)
+![Arquitetura do projeto](arquitetura.png)
