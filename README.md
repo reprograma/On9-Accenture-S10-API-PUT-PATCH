@@ -37,3 +37,26 @@ A principal diferença é quando se trata de idempotência. HTTP PUT é consider
 
 [Diferença de PUT para o PATCH](https://pt.stackoverflow.com/questions/217894/qual-%C3%A9-a-diferen%C3%A7a-entre-o-m%C3%A9todo-put-e-o-patch)
 
+
+# Desafio da Semana
+
+Vamos continuar com o Blog da Reprograma!?
+
+Já implementamos:
+
+[checkbox:checked] Criamos uma nova postagem
+[checkbox:checked] Deletar uma postagem
+
+E agora precisamos:
+
+ [checkbox:unchecked] Atualizar a postagem
+ [checkbox:unchecked] Atualizar o título da postagem
+ [checkbox:unchecked] Atualizar as etiquetas(tags)
+
+
+Novas regras de negócios:
+
+[checkbox:unchecked] Na hora da criação da postagem, não podem existir etiquetas(tags) iguais.
+[checkbox:unchecked] Ao atualizar a postagem, se a etiqueta já existir, não atualizar. 
+[checkbox:unchecked] Ao atualizar o título, não pode existir outro título igual.
+
