@@ -50,14 +50,14 @@ Já implementamos:
 
 E agora precisamos:
 
- [checkbox:unchecked] Atualizar a postagem
- [checkbox:unchecked] Atualizar o título da postagem
- [checkbox:unchecked] Atualizar as etiquetas(tags)
+- [ ] Atualizar a postagem
+- [ ] Atualizar o título da postagem
+- [ ] Atualizar as etiquetas(tags)
 
 
 Novas regras de negócios:
 
-[checkbox:unchecked] Na hora da criação da postagem, não podem existir etiquetas(tags) iguais.
-[checkbox:unchecked] Ao atualizar a postagem, se a etiqueta já existir, não atualizar. 
-[checkbox:unchecked] Ao atualizar o título, não pode existir outro título igual.
+- [ ] Na hora da criação da postagem, não podem existir etiquetas(tags) iguais.
+- [ ] Ao atualizar a postagem, se a etiqueta já existir, não atualizar. 
+- [ ] Ao atualizar o título, não pode existir outro título igual.
 
