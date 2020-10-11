@@ -44,8 +44,8 @@ Vamos continuar com o Blog da Reprograma!?
 
 Já implementamos:
 
-[X] checked#[checkbox:checked] Criamos uma nova postagem
-[X] checked#[checkbox:checked] Deletar uma postagem
+[X] Criamos uma nova postagem
+[X] Deletar uma postagem
 
 E agora precisamos:
 
