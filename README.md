@@ -44,8 +44,9 @@ Vamos continuar com o Blog da Reprograma!?
 
 Já implementamos:
 
-[X] Criamos uma nova postagem
-[X] Deletar uma postagem
+- [X] Criamos uma nova postagem
+
+- [X] Deletar uma postagem
 
 E agora precisamos:
 
