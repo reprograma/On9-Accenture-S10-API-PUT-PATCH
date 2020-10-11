@@ -27,7 +27,7 @@ Isso significa que você só precisa enviar os dados que deseja atualizar e não
 ```
 
 
-# diferenças entre PUT e PATCH
+# Diferenças entre PUT e PATCH
 
 A principal diferença é quando se trata de idempotência. HTTP PUT é considerado idempotente, pois sempre produz os mesmos resultados depois de fazer várias solicitações. Por outro lado, HTTP PATCH é basicamente considerado não idempotente. No entanto, ele pode ser idempotente com base em onde é implementado.
 
