@@ -11,7 +11,13 @@ const obterNovoValor = (array) => {
  *
  * @param {array} array
  * @param {number} telefone
- * @returns {boolean}
+ * @returns {{
+    id: number,
+    nome: string,
+    telefone: string,
+    email: string,
+    outrosTelefones: array,
+  }}
  */
 const verificarNumero = (array, telefone) => {
   return array.find((contato) => contato.telefone == telefone); //verifica se existe algum contato com o mesmo número
