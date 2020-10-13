@@ -6,6 +6,18 @@ const obterNovoValor = (array) => {
   }
 };
 
+/**
+ *
+ *
+ * @param {array} array
+ * @param {number} telefone
+ * @returns {boolean}
+ */
+const verificarNumero = (array, telefone) => {
+  return array.find((contato) => contato.telefone == telefone); //verifica se existe algum contato com o mesmo número
+};
+
 module.exports = {
   obterNovoValor,
+  verificarNumero,
 };

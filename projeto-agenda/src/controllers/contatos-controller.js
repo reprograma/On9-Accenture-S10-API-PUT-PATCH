@@ -37,37 +37,53 @@ const obterTelefone = (requisicao, resposta) => {
 const criarContato = (requisicao, resposta) => {
   let { nome, telefone, email, outrosTelefones } = requisicao.body;
 
-  let novoContato = {
-    //utilizando o helper
-    id: helper.obterNovoValor(contatosModel),
-    nome: nome,
-    telefone: telefone,
-    email: email,
-    outrosTelefones: outrosTelefones,
-  };
+  if (helper.verificarNumero(contatosModel, telefone)) {
+    resposta.status(400).json({ mensagem: "Esse número já existe!" });
+  } else {
+    let novoContato = {
+      //utilizando o helper
+      id: helper.obterNovoValor(contatosModel),
+      nome: nome,
+      telefone: telefone,
+      email: email,
+      outrosTelefones: outrosTelefones,
+    };
 
-  contatosModel.push(novoContato);
-
-  resposta.status(201).json(novoContato);
+    contatosModel.push(novoContato);
+    resposta.status(201).json(novoContato);
+  }
 };
 
 //PUT
 const atualizarContato = (requisicao, resposta) => {
   const { id } = requisicao.params;
+  const obterChaves = Object.keys(requisicao.body); //pega as chaves do body
+
+  //pega o contato que vai ser atualizado
   const filtrarContatoAtualizado = contatosModel.filter((contato) => {
     return contato.id == id;
   })[0];
 
-  const index = contatosModel.indexOf(filtrarContatoAtualizado);
+  //verifica se tem algum contato com o número digitado e seleciona ele
+  const buscarPorTelefone = helper.verificarNumero(
+    contatosModel,
+    requisicao.body["telefone"]
+  );
+  if (
+    buscarPorTelefone &&
+    filtrarContatoAtualizado.id != buscarPorTelefone.id
+  ) {
+    resposta.status(400).json({ mensagem: "Esse número já existe!" });
+  } else {
+    const index = contatosModel.indexOf(filtrarContatoAtualizado);
 
-  const obterChaves = Object.keys(requisicao.body); //pega as chaves do body
+    obterChaves.forEach((chave) => {
+      filtrarContatoAtualizado[chave] = requisicao.body[chave];
+    });
 
-  obterChaves.forEach((chave) => {
-    filtrarContatoAtualizado[chave] = requisicao.body[chave];
-  });
-
-  contatosModel[index] = filtrarContatoAtualizado;
-  resposta.status(200).json(contatosModel[index]);
+    contatosModel[index] = filtrarContatoAtualizado;
+    resposta.status(200).json(contatosModel[index]);
+  }
 };
 
 //PATCH
