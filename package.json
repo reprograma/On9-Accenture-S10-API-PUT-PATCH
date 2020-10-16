@@ -1,0 +1,23 @@
+{
+  "name": "on9-accenture-s10-api-put-patch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariana-franca/On9-Accenture-S10-API-PUT-PATCH.git"
+  },
+  "author": "Mariana França",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariana-franca/On9-Accenture-S10-API-PUT-PATCH/issues"
+  },
+  "homepage": "https://github.com/mariana-franca/On9-Accenture-S10-API-PUT-PATCH#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
