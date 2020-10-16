@@ -37,6 +37,7 @@ const obterTelefone = (requisicao, resposta) => {
 const criarContato = (requisicao, resposta) => {
   let { nome, telefone, email, outrosTelefones } = requisicao.body;
 
+  //utilizando o helper
   if (helper.verificarNumero(contatosModel, telefone)) {
     resposta.status(400).json({ mensagem: "Esse número já existe!" });
   } else {
