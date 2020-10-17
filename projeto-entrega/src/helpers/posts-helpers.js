@@ -1,7 +1,3 @@
-function isAnArray(array) {
-    return Array.isArray(array)
-}
-
 function findTheTag(array, etiqueta) {
     return array.includes(etiqueta)    
 }
@@ -13,7 +9,6 @@ function checkTitle(oldTitle, newTitle) {
 }
 
 module.exports = {
-    isAnArray,
     findTheTag,
     checkTitle
 }

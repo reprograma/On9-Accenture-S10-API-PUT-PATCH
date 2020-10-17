@@ -9,27 +9,26 @@ let message;
 const updatePost = function (request, response) {
 
     const id = request.params.id;
-    const selectedPost = postsModels.find(post => post.id == id)
+    const selectedPost = postsModels.find(post => post.id == id);
     const index = postsModels.indexOf(selectedPost);
     const atributos = Object.keys(request.body);
 
     atributos.forEach(atributo => {
 
-        if (helper.isAnArray(selectedPost[atributo])) {
-
-            const tagRepetida = helper.findTheTag(selectedPost[atributo], request.body[atributo])
+        if (Array.isArray(selectedPost[atributo])) {
+            const tagRepetida = helper.findTheTag(selectedPost[atributo], request.body[atributo]);
 
             if (tagRepetida) {
                 statusCode = 401;
                 message = `Tag já existente! Não foi possível atualizar a postagem.`
             } else {
                 selectedPost[atributo].push(request.body[atributo]);
-                message = postsModels
+                message = selectedPost;
             }
 
         } else {
             selectedPost[atributo] = request.body[atributo];
-            message = postsModels
+            message = postsModels;
         }
     });
 
