@@ -50,33 +50,35 @@ const criarTarefa = (requisicao, resposta) =>{
 //request, response
 
  const atualizarTarefa = (requisicao, resposta) =>{
-  const { id } = requisicao.params;
-  const filtrarTarefaAtualizada = tarefaModel.filter(tarefa => {
-    return tarefa.id == id;
-  })[0];
+  const { id } = requisicao.params; // {id} desestruturar o obj, pegando somente o valor de uma chave
 
-  const indice =  tarefaModel.indexOf(filtrarTarefaAtualizada);
+  //const filtrarTarefaAtualizada = tarefaModel.filter(tarefa => {return tarefa.id == id;})[0];
 
-  const obterChaves = Object.keys(requisicao.body);
+  const filtrarTarefaAtualizada = tarefaModel.find(tarefa => (tarefa.id == id)) //procura dentro do Model um id q seja igual ao id digitado
+
+  const indice =  tarefaModel.indexOf(filtrarTarefaAtualizada); //pega a posição que a tarefa filtrada está dentro do Model
+
+  const obterChaves = Object.keys(requisicao.body);//pegando as chaves e valores do body q nosso usuario digita
 
   obterChaves.forEach(chave => {
+    console.log(chave)
     filtrarTarefaAtualizada[chave] = requisicao.body[chave];
-  });
+  }); //atribui a cada chave já existente na nossa Model o que o usuário digitou
 
-  tarefaModel[indice] = filtrarTarefaAtualizada;
+  tarefaModel[indice] = filtrarTarefaAtualizada; //atualiza de fato o nosso Model
 
-  resposta.status(200).json(tarefaModel[indice]);
+  resposta.status(200).json(tarefaModel[indice]); //enviando o nosso novo Model
 
  }
 
  const atualizarCamposTarefa = (requisicao, resposta) => {
-  const { id } = requisicao.params;
-  const { titulo } = requisicao.body;
-  const tarefa = tarefaModel.find(tarefa => tarefa.id == id);
+  const { id } = requisicao.params; //id que está na URL que o usuario digitou
+  const { titulo } = requisicao.body; //titulo que o usuario digitou
+  const tarefa = tarefaModel.find(tarefa => tarefa.id == id); //encontra a tarefa referente ao id
 
-  tarefa.titulo = titulo;
+  tarefa.titulo = titulo;//atualiza o titulo da nossa Model de acordo com o digitado pelo usuário
 
-  resposta.status(204).json({ mensagem: `O título foi atualizado com sucesso!`})
+  resposta.status(200).json({ mensagem: `O título foi atualizado com sucesso!`})
 
  }
  
@@ -91,7 +93,7 @@ const criarTarefa = (requisicao, resposta) =>{
 
     tarefaModel.splice(index, 1)
 
-    resposta.json(tarefaModel)
+    resposta.json({mensagem: `Foi deletado dado com o id: ${id}`})
  }
 
 
