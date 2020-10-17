@@ -14,9 +14,7 @@ const getById = (req, res) => {
 
 // POST: Create a post INCOMPLETO (Na hora da criação da postagem, não podem existir etiquetas (tags) iguais.)
 const createPost = (req, res) => {
-  let { title, content, tag } = req.body;
-  // const getKeys = Object.keys(req.body);
-  // const findTag = postModel.find((post) => post.tag == tag);
+  let { title, content, tag } = req.body; // Pegando o que é passado pelo usuário no body
 
   postModel.forEach((post) => {
     let tagList = post.tag;
@@ -24,11 +22,7 @@ const createPost = (req, res) => {
     for (item of tagList) {
       const searchByTag = helper.checkTag(postModel, req.body["tag"]);
       if (item.includes(searchByTag) == post.tag.includes(item)) {
-        res
-          .status(400)
-          .json({
-            mensagem: `Essa tag já existe! Por favor, digite uma tag diferente para criar a postagem.`,
-          });
+        res.status(400).json({ mensagem: `Essa tag já existe! Por favor, digite uma tag diferente para criar a postagem.` });
       } else {
         let newPost = {
           //using helper
@@ -39,37 +33,11 @@ const createPost = (req, res) => {
           tag: tag,
         };
 
-        postModel.push(newPost);
-        res.status(201).json(newPost);
+        postModel.push(newPost); // Adicionando a nova postagem
+        res.status(201).json(newPost); // Retornando a nova postagem
       }
     }
   });
-
-  // // using helper
-  // if (helper.checkTag(postModel, tag)) {
-  //   res.status(400).json({ mensagem: `Essa tag já existe!` });
-  // } else {
-  //   let newPost = {
-  //     //using helper
-  //     id: helper.getNewValue(postModel),
-  //     creationDate: helper.newDate(postModel),
-  //     title: title,
-  //     content: content,
-  //     tag: tag,
-  //   };
-
-  //   postModel.push(newPost);
-  //   res.status(201).json(newPost);
-  // };
-
-  // tagExist = postModel.findIndex(postTag => postTag.tag == tag)
-
-  // if (tagExist == -1) {
-  //     postModel.push(newPost);
-  //     res.status(200).json(newPost);
-  // } else {
-  //     res.status(400).send({ mensagem: `Esta tag já existe.` });
-  // }
 };
 
 // PUT: Update a post INCOMPLETO (Ao atualizar a postagem, se a etiqueta já existir, não atualizar.)
@@ -82,13 +50,8 @@ const updatePost = (req, res) => {
 
   // Verifica se tem alguma postagem com a tag digitada e seleciona ela
   const searchByTag = helper.checkTag(postModel, req.body["tag"]);
-
   if (searchByTag && findPostUpdate.id != searchByTag.id) {
-    res
-      .status(400)
-      .json({
-        mensagem: `Essa tag já existe! Não será possível atualizar a postagem.`,
-      });
+    res.status(400).json({ mensagem: `Essa tag já existe! Não será possível atualizar a postagem.` });
   } else {
     const index = postModel.indexOf(findPostUpdate);
 
@@ -152,11 +115,9 @@ const updateTag = (req, res) => {
 // DELETE: Delete a post
 const deletePost = (req, res) => {
   const { id } = req.params; // Pega o id passado pelo usuário na rota
-
   const postIndex = postModel.findIndex((post) => post.id == id); // Retorna o índice no array do primeiro elemento que satisfizer a função
 
   postModel.splice(postIndex, 1); // Remove do models o índice (postagem) encontrado
-
   res.status(200).json(postModel); // Retorna o models já sem a postagem deletada
 };
 
