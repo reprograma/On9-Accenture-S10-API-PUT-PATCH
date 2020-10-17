@@ -48,9 +48,7 @@ const atualizarPostagens = (requisicao, resposta) =>{
             postagemParaAtualizar[propriedade] = requisicao.body[propriedade]
             })
             postagemParaAtualizar.Tags = tagsUnicas            
-            resposta.status(201).json({mensagem: `Postagem atualizada, excluindo, caso necessário, as repetições de tags!`})
-        }else{
-            resposta.status(400).json({mensagem: `erro!`})
+            resposta.status(200).json({mensagem: `Postagem atualizada, excluindo, caso necessário, as repetições de tags!`})
         }
     }
 }
