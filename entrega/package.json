@@ -1,0 +1,24 @@
+{
+  "name": "entrega",
+  "version": "1.0.0",
+  "description": "Criando verbos PUT e PATCH na API de postagens do Blog da Reprograma",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marianadasilva/On9-Accenture-S10-API-PUT-PATCH.git"
+  },
+  "author": "Mariana da Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marianadasilva/On9-Accenture-S10-API-PUT-PATCH/issues"
+  },
+  "homepage": "https://github.com/marianadasilva/On9-Accenture-S10-API-PUT-PATCH#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.5"
+  }
+}
