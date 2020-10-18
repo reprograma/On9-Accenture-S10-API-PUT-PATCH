@@ -1,0 +1,26 @@
+{
+  "name": "On9-Accenture-S10-API-PUT-PATCH",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anareisier/On9-Accenture-S10-API-PUT-PATCH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anareisier/On9-Accenture-S10-API-PUT-PATCH/issues"
+  },
+  "homepage": "https://github.com/anareisier/On9-Accenture-S10-API-PUT-PATCH#readme"
+}
