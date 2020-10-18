@@ -9,7 +9,7 @@ Continuidade do blog Reprograma. Além de aprender os conceitos de POST e DELETE
 
 ## Arquitetura
 
-![Arquitetura do projeto]()
+![Arquitetura do projeto](https://github.com/Fabicaneyu/On9-Accenture-S10-API-PUT-PATCH/blob/fabiola-yugar/entregaFabi/Arquitetura/BlogReprograma_On9-Accenture-S10-API-PUT-PATCH.png)
 
 
 
