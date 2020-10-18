@@ -70,6 +70,7 @@ const atualizarContato = (requisicao, resposta) => {
     contatosModel,
     requisicao.body["telefone"]
   );
+
   if (
     buscarPorTelefone &&
     filtrarContatoAtualizado.id != buscarPorTelefone.id
@@ -85,6 +86,7 @@ const atualizarContato = (requisicao, resposta) => {
     contatosModel[index] = filtrarContatoAtualizado;
     resposta.status(200).json(contatosModel[index]);
   }
+  
 };
 
 //PATCH

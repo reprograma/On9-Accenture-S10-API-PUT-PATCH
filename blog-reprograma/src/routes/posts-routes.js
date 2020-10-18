@@ -36,6 +36,22 @@ router.get("/posts/:id", postsController.obterIdPosts);
 router.post("/posts", postsController.criarPost);
 
 /**
+@route PUT posts
+@desc Atualizar um post
+@access Public 
+@endpoint http://localhost:porta/posts/:id
+**/
+router.put("/posts/:id", postsController.atualizarPostagem); //lembrar de editar o body no insomnia
+
+/**
+@route PATCH posts
+@desc Atualizar o título do post
+@access Public 
+@endpoint http://localhost:porta/posts/:id
+**/
+router.patch("/posts/:id", postsController.atualizarTitulo); //lembrar de editar somente o nome no body
+
+/**
 @route DELETE posts
 @desc Deletar uma tarefa pelo seu identificador
 @access Public 
