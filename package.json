@@ -1,0 +1,25 @@
+{
+  "name": "on9-accenture-s10-api-put-patch",
+  "version": "1.0.0",
+  "description": "Exercici 10 - blog reprograma",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aline-carvalho/On9-Accenture-S10-API-PUT-PATCH.git"
+  },
+  "author": "aline-mendes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aline-carvalho/On9-Accenture-S10-API-PUT-PATCH/issues"
+  },
+  "homepage": "https://github.com/aline-carvalho/On9-Accenture-S10-API-PUT-PATCH#readme"
+}
