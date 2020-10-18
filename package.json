@@ -1,0 +1,24 @@
+{
+  "name": "entregas10-api-put-patch",
+  "version": "1.0.0",
+  "description": "Entrega atividades semana S10 ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aline-pereira/On9-Accenture-S10-API-PUT-PATCH.git"
+  },
+  "author": "Aline Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aline-pereira/On9-Accenture-S10-API-PUT-PATCH/issues"
+  },
+  "homepage": "https://github.com/aline-pereira/On9-Accenture-S10-API-PUT-PATCH#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.5"
+  }
+}
