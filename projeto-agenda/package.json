@@ -1,0 +1,19 @@
+{
+  "name": "projeto-agenda",
+  "version": "1.0.0",
+  "description": "O projeto é destinado a criar API'S, bem como, deletar, visualizar todas ou apenas uma e atualizar, utilizando boas práticas e estrutura de pastas, seguindo o design MVC.",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
