@@ -6,9 +6,16 @@ const obterNovoValor = (array) => {
     }
   }
   
-  const novaData = () => new Date().toString()
+  const novaData = () => new Date().toString();
+
+  const verificarTitulo = (array,titulo)=>{
+    return array.find((title)=> title.titulo == titulo)
+  }
   
   module.exports = {
     obterNovoValor,
-    novaData
+    novaData,
+    verificarTitulo
   }
+
+  

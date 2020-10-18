@@ -1,11 +1,11 @@
 const blogModel = require('../models/blog-models');
 const helper = require('../helpers/helper');
 
-const obterPost = (requisicao, resposta) =>{
+const obterPost = (requisicao, resposta) => {
   resposta.status(200).json(blogModel);
 }
 
-const obterIdPost =  (requisicao, resposta) =>{
+const obterIdPost = (requisicao, resposta) => {
   const { id } = requisicao.params;
   const post = blogModel.find(post => post.id == id);
 
@@ -13,7 +13,7 @@ const obterIdPost =  (requisicao, resposta) =>{
 
 }
 
-const obterTituloPost =  (requisicao, resposta) => {
+const obterTituloPost = (requisicao, resposta) => {
   const { titulo } = requisicao.query;
   const baseDeDados = blogModel.find(post => post.titulo == titulo);
 
@@ -21,29 +21,34 @@ const obterTituloPost =  (requisicao, resposta) => {
 
 }
 
- const criarPost = (requisicao, resposta) =>{
+const criarPost = (requisicao, resposta) => {
   //  const tarefaId = blogModel.map(tarefa => tarefa.id);
   //  let ordermCriacaoNum = blogModel.map(tarefa => tarefa.ordem_criacao);
 
   //  const novoId = tarefaId.length > 0 ? Math.max.apply(Math, tarefaId) + 1 : 1;
 
-   const { titulo, conteudo, tag } = requisicao.body;
+  const { titulo, conteudo, tag } = requisicao.body;
 
-   const novoPost ={
-     
-     id:  helper.obterNovoValor(blogModel),//utilizando o helper
-     dataCriacao: helper.novaData(blogModel),//utilizando o helper
-     titulo: titulo,
-     conteudo: conteudo,
-     tag: [tag]
-   }
 
-   blogModel.push(novoPost);
 
-   resposta.status(201).json(novoPost);
- }
+  if (helper.verificarTitulo(blogModel, titulo)) {
+    resposta.status(400).json({ mensagem: "Esse título já existe" });
+  } else {
+    const novoPost = {
+      id: helper.obterNovoValor(blogModel),//utilizando o helper
+      dataCriacao: helper.novaData(blogModel),//utilizando o helper
+      titulo: titulo,
+      conteudo: conteudo,
+      tag: [tag]
+    }
 
- const deletarPost = (requisicao, resposta) =>{
+    blogModel.push(novoPost);
+
+    resposta.status(201).json(novoPost);
+  }
+}
+
+const deletarPost = (requisicao, resposta) => {
   const { id } = requisicao.params;
 
   let postFiltrado = blogModel.filter(postagem => {
@@ -51,64 +56,56 @@ const obterTituloPost =  (requisicao, resposta) => {
   })[0];
 
   const index = blogModel.indexOf(postFiltrado);
-  
+
   blogModel.splice(index, 1)
 
   resposta.json(blogModel)
- }
+}
 
-   const atualizarPost = (requisicao, resposta) =>{
-    const { id } = requisicao.params;
-    const filtrarPostAtualizado = blogModel.filter(post => {
-      return post.id == id;
-    })[0];
-  
-    //index
-    const indice =  blogModel.indexOf(filtrarPostAtualizado);
-  
-    // keys, getKeys
-    const obterChaves = Object.keys(requisicao.body);
-    //['titulo', 'descricao']
-  
-    obterChaves.forEach(chave => {
-      filtrarPostAtualizado[chave] = requisicao.body[chave];
-    })
-  
-    blogModel[indice] = filtrarPostAtualizado;
-  
-    resposta.status(200).json(blogModel[indice]);
-  
-   }
-  
-  const atualizarCamposPost = (requisicao, resposta) =>{
-       const {id} = requisicao.params;
-       const {titulo} = requisicao.body;
-       const {tags} = requisicao.body;
-       
-       const postTitulo = blogModel.find(post => post.id == id);
-       postTitulo.titulo = titulo;
+const atualizarPost = (requisicao, resposta) => {
+  const { id } = requisicao.params;
+  const filtrarPostAtualizado = blogModel.filter(post => {
+    return post.id == id;
+  })[0];
 
-       
-       const novaTag = blogModel.find(post => post.tags == tags )
-       novaTag.tags = tags
+  //index
+  const indice = blogModel.indexOf(filtrarPostAtualizado);
 
-      
-       //const postTag = blogModel.find(post => post.tags == tags)
+  // keys, getKeys
+  const obterChaves = Object.keys(requisicao.body);
+  //['titulo', 'descricao']
 
-       
-       //postTag.tags = tags
+  obterChaves.forEach(chave => {
+    filtrarPostAtualizado[chave] = requisicao.body[chave];
+  })
 
-       resposta.status(200).json({ mensagem: "os campos foram atualizados com sucesso"})
+  blogModel[indice] = filtrarPostAtualizado;
+
+  resposta.status(200).json(blogModel[indice]);
+
+}
+
+const atualizarCamposPost = (requisicao, resposta) => {
+  const { id } = requisicao.params;
+  const { titulo, tags } = requisicao.body;
+
+  const postTitulo = blogModel.find(post => post.id == id);
+
+  postTitulo.titulo = titulo;
+  postTitulo.tags = tags;
 
 
-   }
+  resposta.status(200).json({ mensagem: "os campos foram atualizados com sucesso" })
 
-   module.exports ={
-    obterPost,
-    obterIdPost,
-    obterTituloPost,
-    criarPost,
-    deletarPost,
-    atualizarPost,
-    atualizarCamposPost
-   }
+
+}
+
+module.exports = {
+  obterPost,
+  obterIdPost,
+  obterTituloPost,
+  criarPost,
+  deletarPost,
+  atualizarPost,
+  atualizarCamposPost
+}
